@@ -1,11 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const { createClient } = require('@supabase/supabase-js')
-
-// Create a single supabase client for interacting with your database
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
-
 /**
  * GET product list.
  *
@@ -13,31 +8,13 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANO
  */
 router.get("/", async (req, res) => {
   try {
-    let { data: newslatter, error } = await supabase
-    .from('newslatter')
-    .select('*')
-
-    if (error){
-      res.json({
-        success: 'false',
-        status: 500,
-        message: error.message
-      })
-    } else {
-      res.json({
-        success: 'true',
-        status: 200,
-        message: "Consulta realizada com sucesso!",
-        data: newslatter
-      })
-    }
-
-  } catch (err) {
     res.json({
-      success: 'false',
-      status: 500,
-      message: err.message
-    })
+      status: 200,
+      message: "Get data has successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Server error");
   }
 });
 
