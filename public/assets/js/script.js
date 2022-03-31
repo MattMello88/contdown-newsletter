@@ -27,7 +27,7 @@ function countdown() {
 
 setInterval(countdown, 1000);
 
-document.getElementById('submitIncreverse').onsubmit = (e) => {
+document.getElementById('submitIncreverse').onsubmit = async (e) => {
   e.preventDefault();
   document.getElementById('retorno').innerText = '';
   console.log(e.target.elements.email.value);
