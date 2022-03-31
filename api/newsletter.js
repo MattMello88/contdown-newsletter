@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { createClient } = require('@supabase/supabase-js')
 
-// Create a single supabase client for interacting with your database
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+
 
 router.get("/", async (req, res) => {
+  // Create a single supabase client for interacting with your database
+  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+
   try {
     let { data: newslatter, error } = await supabase
     .from('newslatter')
@@ -36,6 +38,8 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/add", async (req, res) => {
+  // Create a single supabase client for interacting with your database
+  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
   try {
     if (!req.body.email){
       res.json({
