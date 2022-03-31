@@ -4,7 +4,7 @@ const serveStatic = require('serve-static');
 const cors = require("cors")
 const path = require('path');
 const app = express();
-const product = require("./api/product");
+const newsletter = require("./api/newsletter");
 
 
 var corsOptions = {
@@ -19,7 +19,7 @@ app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.use("/api/product", product);
+app.use("/api/newsletter", newsletter);
 
 app.use(serveStatic(path.join(__dirname, 'public')))
 
