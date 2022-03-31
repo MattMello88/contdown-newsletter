@@ -1,7 +1,7 @@
 document.getElementById('lista').innerHTML = '';
 
 window.onload = async () => {
-  let { data: newslatter, error } = await supabase
+  let { data: newslatter, error } = await supabaseCli
     .from('newslatter')
     .select('*')
     
