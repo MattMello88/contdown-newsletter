@@ -32,18 +32,18 @@ document.getElementById('submitIncreverse').onsubmit = (e) => {
   document.getElementById('retorno').innerText = '';
   console.log(e.target.elements.email.value);
   
-  // Envia uma requisição post
-  axios({
-    method: "post",
-    url: url + "/api/newsletter/add",
-    data: {
-      email: e.target.elements.email.value,
-    }, 
-    responseType: 'json'
-  }).then(function (response) {
-    if(response.data.success == 'false')
-      document.getElementById('retorno').innerText = response.data.message;
+  if(e.target.elements.email.value){
+    const { newslatter, error } = await supabaseCli
+      .from('newslatter')
+      .insert([
+        { email: e.target.elements.email.value },
+      ])
+    if(error)
+      document.getElementById('retorno').innerText = error.message;
     else
-      alert(response.data.message)
-  });
+      alert('Email cadastado com sucesso!')  ;
+  } else {
+    document.getElementById('retorno').innerText = 'Por favor, Preencher o E-mail';
+  }
+
 }
