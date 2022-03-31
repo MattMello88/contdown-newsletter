@@ -1,6 +1,6 @@
 document.getElementById('lista').innerHTML = '';
 
-window.onload = () => {
+window.onload = async () => {
   let { data: newslatter, error } = await supabase
     .from('newslatter')
     .select('*')
