@@ -74,7 +74,7 @@ input {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-button {
+.btn {
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
